@@ -6,3 +6,11 @@ First working version of the plugin.
 
 v1.0.1 - 08/07/2024
 Deepslate to stone transition now has noise of 5 blocks
+
+v1.1.0 - 08/07/2024
+Increased ore spawns
+Removed unnecessary entries in config.yml
+Renamed OreManager to ConfigManager class
+oreConfig.yml has been renamed to config.yml as well as adding some annotations to the config
+Renamed a few variables to be better fitting
+Fixed deepslate stone transition

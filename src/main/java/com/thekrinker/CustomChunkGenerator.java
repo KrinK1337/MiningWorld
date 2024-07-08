@@ -11,7 +11,8 @@ import java.util.Random;
 
 public class CustomChunkGenerator extends ChunkGenerator {
 
-    public MiningWorld plugin;
+    private final int deepslateMaxY = 100;
+    private MiningWorld plugin;
 
     public OrePopulator material;
 
@@ -21,20 +22,27 @@ public class CustomChunkGenerator extends ChunkGenerator {
 
     @Override
     public void generateSurface(WorldInfo worldInfo, Random random, int chunkX, int chunkZ, ChunkData chunkData) {
+        
         for(int x = 0; x < 16; x++) {
+
             for(int z = 0; z < 16; z++) {
-                for(int yDeepslate = 1; yDeepslate < 100; yDeepslate++){
-                    chunkData.setBlock(x, yDeepslate + random.nextInt(5), z, Material.DEEPSLATE);
-                }
-                for(int yStone = 100; yStone <=250; yStone++){
-                    chunkData.setBlock(x, yStone, z, Material.STONE);
+
+                for(int y = 0; y <= 250; y++) {
+                    Material blockMaterial = Material.STONE;
+                    int maxDeepslateWithNoise = deepslateMaxY + random.nextInt(5);
+
+                    if(y < maxDeepslateWithNoise) {
+                        blockMaterial = Material.DEEPSLATE;
+                    }
+
+                    chunkData.setBlock(x, y, z, blockMaterial);
                 }
             }
         }
     }
-
     @Override
     public void generateBedrock(WorldInfo info, Random random, int chunkX, int chunkZ, ChunkData chunkData) {
+        
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
             chunkData.setBlock(x, 0, z, Material.BEDROCK);
@@ -60,7 +68,7 @@ public class CustomChunkGenerator extends ChunkGenerator {
     }
 
     public boolean shouldGenerateStructures() {
-        return false;
+        return true;
     }
 
     public boolean shouldGenerateDungeons() {

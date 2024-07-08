@@ -6,15 +6,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MiningWorld extends JavaPlugin {
 
-  public OreManager oreManager;
+  public ConfigManager configManager;
 
   public OrePopulator material;
 
   @Override
   public void onEnable() {
       getLogger().log(Level.INFO, "MiningWorld Plugin Enabled! :3");
-      this.oreManager = new OreManager(this);
-      this.oreManager.registerMessages();
+      this.configManager = new ConfigManager(this);
+      this.configManager.registerConfig();
   }
 
   @Override
@@ -23,7 +23,7 @@ public final class MiningWorld extends JavaPlugin {
   }
 
   public void reloadConfig() {
-    this.oreManager.resetDefaultMessages();
+    this.configManager.resetDefaultConfig();
   }
   @Override
   public ChunkGenerator getDefaultWorldGenerator(String worldName, String id) {

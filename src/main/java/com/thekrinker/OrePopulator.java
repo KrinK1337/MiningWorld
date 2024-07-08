@@ -12,24 +12,26 @@ import org.bukkit.generator.WorldInfo;
 public class OrePopulator extends BlockPopulator {
   MiningWorld plugin;
 
-  OreManager oreManager;
+  ConfigManager configManager;
   
-  FileConfiguration oreConfig;
+  FileConfiguration configFile;
   
   public OrePopulator(MiningWorld plugin) {
     this.plugin = plugin;
-    this.oreManager = plugin.oreManager;
-    this.oreConfig = this.oreManager.getMessages();
+    this.configManager = plugin.configManager;
+    this.configFile = this.configManager.getConfig();
   }
   
   @Override
   public void populate(WorldInfo worldInfo, Random random, int cx, int cz, LimitedRegion region) {
 
+    // Initial array of materials in config file
     List<String> keyList = new ArrayList<>(
-      this.oreConfig.getConfigurationSection("config").getKeys(false)
+      this.configFile.getConfigurationSection("Ores").getKeys(false)
     );
 
-    for(int times = 0; times < 3; times++){
+    // How many times to run ore spawning per chunk
+    for(int times = 0; times < 9; times++){
       int x = random.nextInt(16) + cx * 16;
       int z = random.nextInt(16) + cz * 16;
       
@@ -38,16 +40,16 @@ public class OrePopulator extends BlockPopulator {
         String oreName = keyList.get(oreIndex);
 
         // Load properties
-        int height = this.oreConfig.getInt("config." + oreName + ".height");
-        int radius = this.oreConfig.getInt("config." + oreName + ".radius");
-        int rarity = this.oreConfig.getInt("config." + oreName + ".rarity");
+        int radius = this.configFile.getInt("Ores." + oreName + ".radius");
+        int rarity = this.configFile.getInt("Ores." + oreName + ".rarity");
 
         // Spawn ore
         if (random.nextInt(100) < rarity) {
           Material ore = Material.getMaterial(oreName);
 
-          int y = random.nextInt(height);
+          int y = random.nextInt(249);
 
+          // Radius of the ore vein
           for( int i = 0; i < radius; i++) {
             if (region.isInRegion(x, y, z)) {
               Material materialType = region.getType(x, y, z);

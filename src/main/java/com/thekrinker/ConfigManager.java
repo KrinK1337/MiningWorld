@@ -9,29 +9,29 @@ import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-public class OreManager {
+public class ConfigManager {
   private MiningWorld plugin;
   
   private FileConfiguration data = null;
   
   private File dataFile = null;
   
-  public OreManager(MiningWorld plugin) {
+  public ConfigManager(MiningWorld plugin) {
     this.plugin = plugin;
   }
   
-  public FileConfiguration getMessages() {
+  public FileConfiguration getConfig() {
     if (this.data == null)
-      reloadMessages(); 
+      reloadConfig(); 
     return this.data;
   }
   
-  public void reloadMessages() {
+  public void reloadConfig() {
     if (this.data == null)
-      this.dataFile = new File(this.plugin.getDataFolder(), "oreConfig.yml"); 
+      this.dataFile = new File(this.plugin.getDataFolder(), "config.yml"); 
     this.data = (FileConfiguration)YamlConfiguration.loadConfiguration(this.dataFile);
     try {
-      Reader defConfigStream = new InputStreamReader(this.plugin.getResource("oreConfig.yml"), "UTF8");
+      Reader defConfigStream = new InputStreamReader(this.plugin.getResource("config.yml"), "UTF8");
       if (defConfigStream != null) {
         YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
         this.data.setDefaults((Configuration)defConfig);
@@ -41,13 +41,13 @@ public class OreManager {
     } 
   }
   
-  public void resetDefaultMessages() {
+  public void resetDefaultConfig() {
     this.data = null;
     this.dataFile = null;
-    registerMessages();
+    registerConfig();
   }
   
-  public void saveMessages() {
+  public void saveConfig() {
     try {
       this.data.save(this.dataFile);
     } catch (IOException e) {
@@ -55,11 +55,11 @@ public class OreManager {
     } 
   }
   
-  public void registerMessages() {
-    this.dataFile = new File(this.plugin.getDataFolder(), "oreConfig.yml");
+  public void registerConfig() {
+    this.dataFile = new File(this.plugin.getDataFolder(), "config.yml");
     if (!this.dataFile.exists()) {
-      getMessages().options().copyDefaults(true);
-      saveMessages();
+      getConfig().options().copyDefaults(true);
+      saveConfig();
     } 
   }
 }

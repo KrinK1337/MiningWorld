@@ -1,0 +1,49 @@
+#Main configuration file for MiningWorld
+#Author TheKrinKer
+
+#This is where you set the properties for the materials/ores
+#Radius - This defines the maximum size of the vein
+#Rarity - The chance of the ore spawning
+Ores:
+  DIRT:
+    radius: 40
+    rarity: 70
+  GRAVEL:
+    radius: 30
+    rarity: 80
+  GRANITE:
+    radius: 35
+    rarity: 80
+  DIORITE:
+    radius: 35
+    rarity: 80
+  ANDESITE:
+    radius: 35
+    rarity: 80
+  COAL_ORE:
+    radius: 7
+    rarity: 93
+  DIAMOND_ORE:
+    radius: 3
+    rarity: 15
+  EMERALD_ORE:
+    radius: 3
+    rarity: 10
+  REDSTONE_ORE:
+    radius: 6
+    rarity: 85
+  GOLD_ORE:
+    radius: 5
+    rarity: 80
+  LAPIS_ORE:
+    radius: 7
+    rarity: 93
+  IRON_ORE:
+    radius: 6
+    rarity: 80
+  ANCIENT_DEBRIS:
+    radius: 3
+    rarity: 5
+  NETHER_QUARTZ_ORE:
+    radius: 7
+    rarity: 80
