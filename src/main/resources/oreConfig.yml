@@ -1,0 +1,89 @@
+config:
+  DIRT:
+    height: 249
+    radius: 20
+    rarity: 70
+  GRAVEL:
+    height: 249
+    radius: 20
+    rarity: 80
+  GRANITE:
+    height: 249
+    radius: 20
+    rarity: 80
+  DIORITE:
+    height: 249
+    radius: 20
+    rarity: 80
+  ANDESITE:
+    height: 249
+    radius: 20
+    rarity: 80
+  TUFF:
+    height: 99
+    radius: 20
+    rarity: 80
+  COAL_ORE:
+    height: 249
+    radius: 7
+    rarity: 93
+  DIAMOND_ORE:
+    height: 249
+    radius: 3
+    rarity: 15
+  EMERALD_ORE:
+    height: 249
+    radius: 3
+    rarity: 10
+  REDSTONE_ORE:
+    height: 249
+    radius: 6
+    rarity: 85
+  GOLD_ORE:
+    height: 249
+    radius: 5
+    rarity: 80
+  LAPIS_ORE:
+    height: 249
+    radius: 7
+    rarity: 93
+  IRON_ORE:
+    height: 249
+    radius: 6
+    rarity: 80
+  DEEPSLATE_COAL_ORE:
+    height: 99
+    radius: 7
+    rarity: 3
+  DEEPSLATE_DIAMOND_ORE:
+    height: 99
+    radius: 3
+    rarity: 15
+  DEEPSLATE_EMERALD_ORE:
+    height: 99
+    radius: 3
+    rarity: 2
+  DEEPSLATE_REDSTONE_ORE:
+    height: 99
+    radius: 6
+    rarity: 85
+  DEEPSLATE_GOLD_ORE:
+    height: 99
+    radius: 5
+    rarity: 80
+  DEEPSLATE_LAPIS_ORE:
+    height: 99
+    radius: 7
+    rarity: 93
+  DEEPSLATE_IRON_ORE:
+    height: 99
+    radius: 6
+    rarity: 80
+  ANCIENT_DEBRIS:
+    height: 249
+    radius: 3
+    rarity: 5
+  NETHER_QUARTZ_ORE:
+    height: 249
+    radius: 7
+    rarity: 80

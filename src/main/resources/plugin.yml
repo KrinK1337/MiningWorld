@@ -1,0 +1,7 @@
+name: MiningWorld
+version: 1.0.0
+api-version: 1.21
+description: Mining world generation plugin
+author: TheKrinKer
+main: com.thekrinker.MiningWorld
+load: STARTUP
