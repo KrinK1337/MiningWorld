@@ -41,6 +41,9 @@ Ores:
   IRON_ORE:
     radius: 6
     rarity: 80
+  COPPER_ORE:
+    radius: 6
+    rarity: 85
   ANCIENT_DEBRIS:
     radius: 3
     rarity: 5

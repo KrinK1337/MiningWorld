@@ -14,3 +14,6 @@ Renamed OreManager to ConfigManager class
 oreConfig.yml has been renamed to config.yml as well as adding some annotations to the config
 Renamed a few variables to be better fitting
 Fixed deepslate stone transition
+
+v1.1.1 - 08/07/2024
+Missing copper ore added
