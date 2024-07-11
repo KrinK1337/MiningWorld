@@ -1,10 +1,13 @@
-package com.thekrinker;
+package com.thekrinker.Utilities;
+
+import com.thekrinker.MiningWorld;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
+
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;

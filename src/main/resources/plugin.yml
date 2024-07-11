@@ -1,7 +1,12 @@
 name: MiningWorld
-version: 1.1.1
+version: 1.2.0
 api-version: 1.21
 description: Mining world generation plugin
 author: TheKrinKer
 main: com.thekrinker.MiningWorld
 load: STARTUP
+commands:
+  mwreload:
+    description: Reloads the Mining World configuration file.
+    usage: /<command>
+    permission: miningworld.reload

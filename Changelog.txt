@@ -17,3 +17,9 @@ Fixed deepslate stone transition
 
 v1.1.1 - 08/07/2024
 Missing copper ore added
+
+v1.2.0 - 11/07/2024
+Changed the paths to make it easier to see what's what and look neat
+Changed ore spawning rates
+Added /mwreload command
+Added an option to toggle flat bedrock

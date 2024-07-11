@@ -1,8 +1,12 @@
-package com.thekrinker;
+package com.thekrinker.WorldGeneration;
+
+import com.thekrinker.MiningWorld;
+import com.thekrinker.Utilities.ConfigManager;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.generator.BlockPopulator;
@@ -10,11 +14,12 @@ import org.bukkit.generator.LimitedRegion;
 import org.bukkit.generator.WorldInfo;
 
 public class OrePopulator extends BlockPopulator {
-  MiningWorld plugin;
-
-  ConfigManager configManager;
   
-  FileConfiguration configFile;
+  public MiningWorld plugin;
+
+  public ConfigManager configManager;
+  
+  public FileConfiguration configFile;
   
   public OrePopulator(MiningWorld plugin) {
     this.plugin = plugin;
@@ -31,7 +36,7 @@ public class OrePopulator extends BlockPopulator {
     );
 
     // How many times to run ore spawning per chunk
-    for(int times = 0; times < 9; times++){
+    for(int times = 0; times < 10; times++){
       int x = random.nextInt(16) + cx * 16;
       int z = random.nextInt(16) + cz * 16;
       
