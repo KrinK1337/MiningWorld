@@ -1,7 +1,6 @@
 package com.thekrinker.Commands;
 
 import com.thekrinker.MiningWorld;
-import com.thekrinker.Utilities.ConfigManager;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -11,13 +10,10 @@ import org.bukkit.entity.Player;
 
 public class ReloadCommand implements CommandExecutor {
 
-    ConfigManager configManager;
-
     MiningWorld plugin;
 
     public ReloadCommand(MiningWorld plugin) {
         this.plugin = plugin;
-        this.configManager = plugin.configManager;
     }
 
     @Override
@@ -31,7 +27,7 @@ public class ReloadCommand implements CommandExecutor {
 
         plugin.getLogger().info("MiningWorld Config reloaded!");
         
-        configManager.reloadConfig();
+        plugin.reloadConfig();
         return true;
     }
 }

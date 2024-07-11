@@ -1,34 +1,22 @@
 package com.thekrinker.WorldGeneration;
 
 import com.thekrinker.MiningWorld;
-import com.thekrinker.Utilities.ConfigManager;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.LimitedRegion;
 import org.bukkit.generator.WorldInfo;
 
 public class OrePopulator extends BlockPopulator {
-  
-  // Load config options
-  public int maxWorldHeight = this.configFile.getInt(".Max world height");
-  public int minWorldHeight = this.configFile.getInt(".Min world height");
 
   public MiningWorld plugin;
-
-  public ConfigManager configManager;
-  
-  public FileConfiguration configFile;
   
   public OrePopulator(MiningWorld plugin) {
     this.plugin = plugin;
-    this.configManager = plugin.configManager;
-    this.configFile = this.configManager.getConfig();
   }
   
   @Override
@@ -36,7 +24,7 @@ public class OrePopulator extends BlockPopulator {
 
     // Initial array of materials in config file
     List<String> keyList = new ArrayList<>(
-      this.configFile.getConfigurationSection("Ores").getKeys(false)
+      this.plugin.getConfig().getConfigurationSection("Ores").getKeys(false)
     );
 
     // How many times to run ore spawning per chunk
@@ -49,18 +37,18 @@ public class OrePopulator extends BlockPopulator {
         String oreName = keyList.get(oreIndex);
 
         // Load ore properties
-        int radius = this.configFile.getInt("Ores." + oreName + ".radius");
-        int rarity = this.configFile.getInt("Ores." + oreName + ".rarity");
+        int radius = this.plugin.getConfig().getInt("Ores." + oreName + ".radius");
+        int rarity = this.plugin.getConfig().getInt("Ores." + oreName + ".rarity");
 
         // Spawn ore
         if (random.nextInt(100) < rarity) {
           Material ore = Material.getMaterial(oreName);
 
-          int y = random.nextInt(maxWorldHeight + 64) - 64;
+          int y = random.nextInt(plugin.maxWorldHeight + 64) - 64;
 
           // Radius of the ore vein
           for( int i = 0; i < radius; i++) {
-            if (region.isInRegion(x, y, z) && y < maxWorldHeight) {
+            if (region.isInRegion(x, y, z) && y < plugin.maxWorldHeight) {
               Material materialType = region.getType(x, y, z);
 
               if (materialType == Material.DEEPSLATE || materialType == Material.STONE) {
