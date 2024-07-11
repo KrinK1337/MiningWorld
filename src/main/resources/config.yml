@@ -1,15 +1,23 @@
-##Main configuration file for MiningWorld
-##Author TheKrinKer
+# Main configuration file for MiningWorld
+# Author TheKrinKer
 
 
-##This is the main configuration options
-##Flat bedrock (true/false) whether the plugin should generate bedrock as a flat layer or vanilla style with noise
-Config:
-  Flat Bedrock: false
+# This is the main configuration options for the plugin
 
-##This is where you set the properties for the materials/ores
-##Radius - This defines the maximum size of the vein
-##Rarity - The chance of the ore spawning
+# Flat bedrock (true/false) whether the plugin should generate bedrock as a flat layer or vanilla style with noise
+Flat Bedrock: false
+
+# Defines the minimum and maximum world Y level
+# Beware as high worlds might take a while to generate chunks. Pre-generating the world is highly recommended
+Max world height: 200
+Min world height: -64
+
+# Defines at what Y level the Stone to Deepslate transition should occur
+Deepslate Y: 100
+
+# This is where you set the properties for the materials/ores
+# Radius - This defines the maximum size of the vein
+# Rarity - The chance of the ore spawning
 Ores:
   DIRT:
     radius: 60

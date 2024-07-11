@@ -22,6 +22,8 @@ public class CustomChunkGenerator extends ChunkGenerator {
 
     public FileConfiguration configFile;
 
+    public OrePopulator orePopulator;
+
     public CustomChunkGenerator(MiningWorld plugin) {
         this.plugin = plugin;
         this.configManager = plugin.configManager;
@@ -33,18 +35,18 @@ public class CustomChunkGenerator extends ChunkGenerator {
     @Override
     public void generateSurface(WorldInfo worldInfo, Random random, int chunkX, int chunkZ, ChunkData chunkData) {
         
-        //DEEPSLATE Y level
-        final int deepslateY = 100;
+        // DEEPSLATE Y level
+        int deepslateY = this.configFile.getInt(".Deepslate Y");
         
-        //Checks if Flat bedrock is enabled in config
-        boolean flatBedrock = this.configFile.getBoolean("Config." + ".Flat Bedrock");
-
-        //Generates BEDROCK, DEEPSLATE and STONE
+        // Checks if Flat bedrock is enabled in config
+        boolean flatBedrock = this.configFile.getBoolean(".Flat Bedrock");
+        
+        // Generates BEDROCK, DEEPSLATE and STONE
         for(int x = 0; x < 16; x++) {
 
             for(int z = 0; z < 16; z++) {
 
-                for(int y = -64; y <= 200; y++) {
+                for(int y = orePopulator.minWorldHeight; y <= orePopulator.maxWorldHeight; y++) {
                     Material blockMaterial = Material.STONE;
                     int maxDeepslateWithNoise = deepslateY + random.nextInt(5);
 
@@ -56,11 +58,13 @@ public class CustomChunkGenerator extends ChunkGenerator {
                 }
 
                 if (flatBedrock) {
-                    chunkData.setBlock(x, -64, z, Material.BEDROCK);
+                    chunkData.setBlock(x, orePopulator.minWorldHeight, z, Material.BEDROCK);
                 } else {
-                    chunkData.setBlock(x, -64, z, Material.BEDROCK);
+                    chunkData.setBlock(x, orePopulator.minWorldHeight, z, Material.BEDROCK);
 
-                    for(int bedrockY = -64; bedrockY < -60; bedrockY++) {
+                    int maxBedrockNoiseHeight = orePopulator.minWorldHeight + 4;
+
+                    for(int bedrockY = orePopulator.minWorldHeight; bedrockY < maxBedrockNoiseHeight; bedrockY++) {
                         if (random.nextInt(2) == 1) {
                             chunkData.setBlock(x, bedrockY, z, Material.BEDROCK);
                         }

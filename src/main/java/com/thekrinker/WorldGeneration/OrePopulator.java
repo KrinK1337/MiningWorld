@@ -15,6 +15,10 @@ import org.bukkit.generator.WorldInfo;
 
 public class OrePopulator extends BlockPopulator {
   
+  // Load config options
+  public int maxWorldHeight = this.configFile.getInt(".Max world height");
+  public int minWorldHeight = this.configFile.getInt(".Min world height");
+
   public MiningWorld plugin;
 
   public ConfigManager configManager;
@@ -44,7 +48,7 @@ public class OrePopulator extends BlockPopulator {
       for (int oreIndex = 0; oreIndex < keyList.size(); oreIndex++) {
         String oreName = keyList.get(oreIndex);
 
-        // Load properties
+        // Load ore properties
         int radius = this.configFile.getInt("Ores." + oreName + ".radius");
         int rarity = this.configFile.getInt("Ores." + oreName + ".rarity");
 
@@ -52,11 +56,11 @@ public class OrePopulator extends BlockPopulator {
         if (random.nextInt(100) < rarity) {
           Material ore = Material.getMaterial(oreName);
 
-          int y = random.nextInt(262) - 64;
+          int y = random.nextInt(maxWorldHeight + 64) - 64;
 
           // Radius of the ore vein
           for( int i = 0; i < radius; i++) {
-            if (region.isInRegion(x, y, z) && y < 200) {
+            if (region.isInRegion(x, y, z) && y < maxWorldHeight) {
               Material materialType = region.getType(x, y, z);
 
               if (materialType == Material.DEEPSLATE || materialType == Material.STONE) {
