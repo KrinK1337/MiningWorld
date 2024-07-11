@@ -23,3 +23,8 @@ Changed the paths to make it easier to see what's what and look neat
 Changed ore spawning rates
 Added /mwreload command
 Added an option to toggle flat bedrock
+
+v1.2.1 11/07/2024
+Fixed ore generation at levels below Y=0
+Ores not going to be generating at surface
+Moved world down so its Y=-64 to Y=200

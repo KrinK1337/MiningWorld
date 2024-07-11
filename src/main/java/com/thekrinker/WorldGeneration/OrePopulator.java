@@ -52,11 +52,11 @@ public class OrePopulator extends BlockPopulator {
         if (random.nextInt(100) < rarity) {
           Material ore = Material.getMaterial(oreName);
 
-          int y = random.nextInt(249);
+          int y = random.nextInt(262) - 64;
 
           // Radius of the ore vein
           for( int i = 0; i < radius; i++) {
-            if (region.isInRegion(x, y, z)) {
+            if (region.isInRegion(x, y, z) && y < 200) {
               Material materialType = region.getType(x, y, z);
 
               if (materialType == Material.DEEPSLATE || materialType == Material.STONE) {
