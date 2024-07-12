@@ -31,7 +31,7 @@ public class OrePopulator extends BlockPopulator {
     for(int times = 0; times < 10; times++){
       int x = random.nextInt(16) + cx * 16;
       int z = random.nextInt(16) + cz * 16;
-      
+
       // Loop through all ores
       for (int oreIndex = 0; oreIndex < keyList.size(); oreIndex++) {
         String oreName = keyList.get(oreIndex);
@@ -44,7 +44,8 @@ public class OrePopulator extends BlockPopulator {
         if (random.nextInt(100) < rarity) {
           Material ore = Material.getMaterial(oreName);
 
-          int y = random.nextInt(plugin.maxWorldHeight + 64) - 64;
+          // int maxWorldHeight = plugin.maxWorldHeight + 64;
+          int y = random.nextInt(plugin.maxWorldHeight) - 64;
 
           // Radius of the ore vein
           for( int i = 0; i < radius; i++) {

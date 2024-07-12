@@ -2,9 +2,13 @@ package com.thekrinker.WorldGeneration;
 
 import com.thekrinker.MiningWorld;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
 
@@ -60,6 +64,11 @@ public class CustomChunkGenerator extends ChunkGenerator {
                 }
             }
         }
+    }
+
+    @Override
+    public List<BlockPopulator> getDefaultPopulators(World world) {
+    return Arrays.asList(new OrePopulator(plugin));
     }
 
     public boolean shouldGenerateCaves() {
